@@ -1,0 +1,51 @@
+
+// primary red: #f44a52
+
+@import "~typeface-raleway/index.css";
+@import "~typeface-ubuntu/index.css";
+
+$font-family-sans-serif: "Raleway", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
+$font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:       $font-family-sans-serif !default;
+
+$blue:    #007bff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #f44a52 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+nav {
+  &.navbar {
+    .navbar-brand {
+      background: url("/img/logo@2x.png") no-repeat;
+      background-size: auto 100%;
+      padding: 0 0 0 1.5em;
+      font-weight: 700;
+      font-size: 1.5em;
+      color: $red;
+      &:active,&:hover {
+        color: $red;
+      }
+    }
+    .navbar-text {
+      svg {
+        background-size: contain;
+      }
+    }
+  }
+}
+
+.homepage {
+  background-color: $red;
+  color: $white;
+
+}
