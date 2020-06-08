@@ -20,8 +20,32 @@ $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
 
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px,
+        xxl: 1380px,
+        xxxl: 1560px
+) !default;
 
-@import '~bootstrap/scss/bootstrap.scss';
+$theme-colors: (
+        "primary": $red,
+        "danger": $pink
+);
+
+
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+html,body {
+  height: 100%;
+  > div {
+    height: 100%;
+  }
+}
 
 nav {
   &.navbar {
@@ -44,8 +68,141 @@ nav {
   }
 }
 
-.homepage {
+.red-background {
   background-color: $red;
   color: $white;
 
+  .fancy {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 58px;
+  }
+
+  .btn-primary {
+    @include button-variant($red, $white, darken($red, 2.5%));
+    font-weight: bold;
+  }
+
+  .btn-outline-primary {
+    @include button-variant($white, $red, darken($white, 7.5%), $red);
+    font-weight: bold;
+    color: $red;
+  }
+
+  .isopad-container {
+    max-width: 1140px;
+    height: 480px;
+
+    .isopad {
+      position: relative;
+      overflow: hidden;
+      max-width: 710px;
+
+      .pin {
+        position: absolute;
+        width: 54px;
+        height: 65px;
+        background-image: url(/img/pin.png);
+        background-repeat: no-repeat;
+        z-index: 8;
+        opacity: 0;
+        animation-name: bounceInDown;
+        -moz-animation-name: bounceInDown;
+        animation-duration: 0.8s;
+        -moz-animation-duration: 0.8s;
+        animation-timing-function: linear;
+        -moz-animation-timing-function: linear;
+        animation-direction: alternate;
+        -moz-animation-direction: alternate;
+        animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+
+        @media only screen and (max-width: 640px) {
+          width: 30px;
+          height: 38px;
+          background-size: 30px 38px;
+        }
+
+
+        &.pin-1 {
+          top: 40%;
+          left: 35%;
+          animation-delay: 0.2s;
+        }
+
+        &.pin-2 {
+          top: 40%;
+          left: 50%;
+          animation-delay: 0.4s;
+        }
+
+        &.pin-3 {
+          top: 50%;
+          left: 48%;
+          animation-delay: 0.5s;
+        }
+
+        &.pin-4 {
+          top: 25%;
+          left: 65%;
+          animation-delay: 0.55s;
+        }
+      }
+    }
+  }
+
+  a {
+    color: $white;
+  }
+
+}
+
+
+
+@keyframes bounceInDown {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    -moz-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -3000px, 0);
+    -moz-transform: translate3d(0, -3000px, 0);
+    transform: translate3d(0, -3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 25px, 0);
+    -moz-transform: translate3d(0, 25px, 0);
+    transform: translate3d(0, 25px, 0);
+    opacity: 1;
+  }
+  75% {
+    -webkit-transform: translate3d(0, -10px, 0);
+    -moz-transform: translate3d(0, -10px, 0);
+    transform: translate3d(0, -10px, 0);
+  }
+  90% {
+    -webkit-transform: translate3d(0, 5px, 0);
+    -moz-transform: translate3d(0, 5px, 0);
+    transform: translate3d(0, 5px, 0);
+  }
+  to {
+    -webkit-transform: none;
+    -moz-transform: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+.bounceInDown {
+  -webkit-animation-name: bounceInDown;
+  animation-name: bounceInDown;
+}
+
+.partner-logo {
+  max-height: 150px;
+  max-width: 300px;
 }
