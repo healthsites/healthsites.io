@@ -1,26 +1,47 @@
 import React, {Component} from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Tab from 'react-bootstrap/Tab'
+import Tab from 'react-bootstrap/Tab';
 import {ListGroup} from "react-bootstrap";
 
-class Homepage extends Component {
-    render() {
+class About extends Component {
+
+    constructor(props) {
+
+        super(props);
+
+        this.state = {
+            section: props.match.params.section
+        }
+    }
+
+    setKey(key) {
+        this.props.history.push('/about/' + key);
+        this.setState({ section: key });
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.setState({ section: newProps.match.params.section });
+    }
+
+    render(props) {
         return (
-            <Tab.Container defaultActiveKey="#goal">
+            <Tab.Container activeKey={ this.state.section } onSelect={(k) => this.setKey(k)} transition={false}>
                 <Row className="justify-content-md-center p-md-5 p-1 min-vh-100">
                     <Col md={{ span: 3 }}>
                         <ListGroup>
-                            <ListGroup.Item action href="#goal"><strong>Project goal</strong></ListGroup.Item>
-                            <ListGroup.Item action href="#objectives"><strong>Objectives</strong></ListGroup.Item>
-                            <ListGroup.Item action href="#strategy"><strong>Strategy</strong></ListGroup.Item>
-                            <ListGroup.Item action href="#history"><strong>Project history</strong></ListGroup.Item>
-                            <ListGroup.Item action href="#support"><strong>Institutional support</strong></ListGroup.Item>
+                            <ListGroup.Item eventKey="goal"><strong>Project goal</strong></ListGroup.Item>
+                            <ListGroup.Item eventKey="objectives"><strong>Objectives</strong></ListGroup.Item>
+                            <ListGroup.Item eventKey="strategy"><strong>Strategy</strong></ListGroup.Item>
+                            <ListGroup.Item eventKey="history"><strong>Project history</strong></ListGroup.Item>
+                            <ListGroup.Item eventKey="support"><strong>Institutional support</strong></ListGroup.Item>
+                            <ListGroup.Item eventKey="team"><strong>Team</strong></ListGroup.Item>
+                            <ListGroup.Item eventKey="research"><strong>Research</strong></ListGroup.Item>
                         </ListGroup>
                     </Col>
                     <Col md={{ span: 9}} className="px-md-5 py-md-0 p-3">
                         <Tab.Content>
-                            <Tab.Pane eventKey="#goal">
+                            <Tab.Pane eventKey="goal">
                                 <h2>Project goal</h2>
                                 <p>Accurate and open baseline health facility data that lives in OpenStreetMap</p>
                                 <img src="/img/about.png" className="img-fluid m-md-4" alt="Health Facility Data"/>
@@ -51,7 +72,7 @@ class Homepage extends Component {
                                                                             target="_blank">contact
                                     us</a></p>
                             </Tab.Pane>
-                            <Tab.Pane eventKey="#objectives">
+                            <Tab.Pane eventKey="objectives">
                                 <h2>Objectives</h2>
                                 <ul>
                                     <li>Identify primary user stories and understand the persona’s behind them</li>
@@ -63,7 +84,7 @@ class Homepage extends Component {
                                     <li>The existence of this data in the commons will help community, civil society and governmental organisations to make health facilities more accessible and relevant to the communities that they serve</li>
                                 </ul>
                             </Tab.Pane>
-                            <Tab.Pane eventKey="#strategy">
+                            <Tab.Pane eventKey="strategy">
                                 <h2>Strategy</h2>
                                 <img src="/img/strategy.png" className="img-fluid m-md-4" alt="Strategy"
                                      width="975" height="506"/>
@@ -94,7 +115,7 @@ class Homepage extends Component {
                                     Code: Free BSD License
                                     Content: Attribution 4.0 International</p>
                             </Tab.Pane>
-                            <Tab.Pane eventKey="#history">
+                            <Tab.Pane eventKey="history">
                                 <h2>Project history</h2>
                                 <p>The project originated in South Africa with a Human Centered Design approach focused
                                     on the needs of women living in the townships of South Africa. </p>
@@ -121,7 +142,7 @@ class Homepage extends Component {
                                     Healthsites.io</p>
                                 <p>Quote 2</p>
                             </Tab.Pane>
-                            <Tab.Pane eventKey="#support">
+                            <Tab.Pane eventKey="support">
                                 <h2>Institutional support</h2>
                                 <table className="table table-bordered" width="100%" border="1">
                                     <tbody>
@@ -153,13 +174,20 @@ class Homepage extends Component {
                                             countries.
                                         </td>
                                         <td className="text-center">
-                                            <img src="/img/partners/digital-square.png" className="img-fluid partner-logo"
+                                              <img src="/img/partners/digital-square.png" className="img-fluid partner-logo"
                                                  alt="Digital Square"/>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
 
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="team">
+                                <h1>Team here</h1>
+                            </Tab.Pane>
+
+                            <Tab.Pane eventKey="research">
+                                <h1>Research</h1>
                             </Tab.Pane>
                         </Tab.Content>
                     </Col>
@@ -169,4 +197,4 @@ class Homepage extends Component {
     }
 }
 
-export default Homepage;
+export default About;
