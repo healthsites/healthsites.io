@@ -81,7 +81,7 @@ class About extends Component {
                                     <li>Sustain and seek out ways to sustain (in terms of financial, infrastructural and human resources) the continued development, and improvement of the healthsites.io platform and other tools that collect and curate health facility location data</li>
                                     <li>The data will serve as a critical resource for first responders in emergency and crisis situations, and for improving access to primary health care</li>
                                     <li>The data will serve as a resource for members of the general public, healthcare service providers, government and other institutional actors</li>
-                                    <li>The existence of this data in the commons will help community,, civil society and governmental organisations to make health facilities more accessible and relevant to the communities that they serve</li>
+                                    <li>The existence of this data in the commons will help community, civil society and governmental organisations to make health facilities more accessible and relevant to the communities that they serve</li>
                                 </ul>
                             </Tab.Pane>
                             <Tab.Pane eventKey="strategy">
